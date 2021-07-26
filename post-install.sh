@@ -43,8 +43,6 @@ set_motd()
 	chmod +x /etc/update-motd.d/10-uname
 
 	if [ $VERBOSE = true ]; then
-		echo
-		echo "[+] ..."
 		echo "[+] Done !"
 		echo "---------------------------------------------------------------"
 		echo
@@ -84,7 +82,8 @@ set_update ()
 		echo "[+] ... "
 		echo
 		sleep 1
-
+	fi
+	
 	DEBIAN_FRONTEND=noninteractive apt-get update && apt-get -y full-upgrade
 
 	if [ $VERBOSE = true ]; then
@@ -104,14 +103,13 @@ set_vimrc()
 		echo "---------------------------------------------------------------"
 		echo "[+] Editing the .vimrc to be just like you like it ..."
 		echo "[+] ... "
-		echo
 		sleep 1
 	fi
-
+	
+	mv /etc/vim/vimrc /etc/vim/vimrc.bak
+	cat vimrc >> /etc/vim/vimrc
 
 	if [ $VERBOSE = true ]; then
-		echo
-		echo "[+] ..."
 		echo "[+] Done !"
 		echo "---------------------------------------------------------------"
 		echo
@@ -226,7 +224,7 @@ do
 				silent ) VERBOSE=false ;;
 				sourcelist ) SOURCE_LIST=true ;;
 				'' ) break ;;
-				* )  echo "Illegal option --$OPTARG" > &2; exit 2 ;;
+				* )  echo "Illegal option --$OPTARG" >&2; exit 2 ;;
 			esac
 			;;
 		: )
