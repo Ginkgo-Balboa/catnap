@@ -10,10 +10,12 @@
 # Help
 usage() 
 {
-	echo "---------------------------------------------------------------"
-	echo "Script de post-installation pour serveurs catnap."
 	echo
-	echo "Usage: $0 [-v] [--sourcelist]"
+	echo "---------------------------------------------------------------"
+	echo "Post installation scripts for LABS."
+	echo
+	echo "Usage: $0 [-s] [--silent] | [-l] [--sourcelist]"
+	echo "---------------------------------------------------------------"
 	exit 2
 }
 
@@ -168,6 +170,41 @@ set_sourcelist()
 	fi
 }
 
+# Ajout des clés SSH
+set_ssh()
+{
+	if [ $VERBOSE = true ]; then
+		echo "---------------------------------------------------------------"
+		echo "[+] Adding your SSH keys ?"
+		echo "[+] ... "
+		echo
+		sleep 1
+	fi
+
+	while true; do
+		read -p "$*[+] Do you want to add a SSH Pritvate Key for root login ? [y/n]: " yn
+		case $yn in
+			[Yy]*)
+				read -p "Past your key here : " SSH_KEY ;
+				mkdir -p /root/.ssh && echo "$SSH_KEY" >> /root/.ssh/authorized_keys ;
+				sed -i 's+#PermitRootLogin prohibit-password+PermitRootLogin prohibit-password+g' /etc/ssh/sshd_config ;
+				systemctl restart sshd ;
+				return 0 ;;
+			[Nn]*)
+				return 1 ;;
+		esac
+	done
+
+	if [ $VERBOSE = true ]; then
+		echo
+		echo "[+] ..."
+		echo "[+] Done !"
+		echo "---------------------------------------------------------------"
+		echo
+		sleep 0.5
+	fi
+}
+
 # -> Variables getops
 SOURCE_LIST=false
 VERBOSE=true
@@ -209,3 +246,4 @@ set_packets
 set_update
 set_vimrc
 set_bashrc
+set_ssh
