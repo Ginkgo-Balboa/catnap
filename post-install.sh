@@ -201,7 +201,7 @@ set_ssh()
 	fi
 
 	while true; do
-		read -p "$*[+] Do you want to add a SSH Pritvate Key for root login ? [y/n]: " yn
+		read -p "$*[+] Would you like to add a SSH Pritvate Key for root login ? [y/n]: " yn
 		case $yn in
 			[Yy]*)
 				read -p "Past your key here : " SSH_KEY ;
