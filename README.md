@@ -1,5 +1,5 @@
 # catnap
 
-This is my post-installation script.
+Some scripts for personnal projetcs.
 
 Feel free to use it if u want.
