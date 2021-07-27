@@ -1,5 +1,3 @@
 # catnap
 
-Some scripts for personnal projetcs.
-
-Feel free to use it if u want.
+I use this script whenever I create a new machine.
