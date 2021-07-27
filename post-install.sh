@@ -50,7 +50,7 @@ set_motd()
 	fi
 }
 
-# -> Installation des paquets standards
+# Installation des paquets standards
 set_packets()
 {
 	if [ $VERBOSE = true ]; then
@@ -73,7 +73,7 @@ set_packets()
 	fi
 }
 
-# -> Mise a jour du systeme
+# Mise a jour du systeme
 set_update ()
 {
 	if [ $VERBOSE = true ]; then
@@ -96,12 +96,12 @@ set_update ()
 	fi
 }
 
-# -> Edition des préférences du vimrc
+# Edition des préférences du vimrc
 set_vimrc()
 {
 	if [ $VERBOSE = true ]; then
 		echo "---------------------------------------------------------------"
-		echo "[+] Editing the .vimrc to be just like you like it ..."
+		echo "[+] Editing the vimrc to be just like you like it ..."
 		echo "[+] ... "
 		sleep 1
 	fi
@@ -117,7 +117,28 @@ set_vimrc()
 	fi
 }
 
-# -> Edition du .bashrc pour root
+# Edition des préférences du vimrc
+set_nanorc()
+{
+	if [ $VERBOSE = true ]; then
+		echo "---------------------------------------------------------------"
+		echo "[+] Editing the nanorc to be just like you like it ..."
+		echo "[+] ... "
+		sleep 1
+	fi
+	
+	mv /etc/nanorc /etc/nanorc.bak
+	cat nanorc >> /etc/nanorc
+
+	if [ $VERBOSE = true ]; then
+		echo "[+] Done !"
+		echo "---------------------------------------------------------------"
+		echo
+		sleep 0.5
+	fi
+}
+
+# Edition du .bashrc root
 set_bashrc()
 {
 	if [ $VERBOSE = true ]; then
@@ -243,5 +264,6 @@ set_motd
 set_packets
 set_update
 set_vimrc
+set_nanorc
 set_bashrc
 set_ssh
