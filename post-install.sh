@@ -148,8 +148,11 @@ set_bashrc()
 		sleep 1
 	fi
 
-	mv /etc/vim/vimrc /etc/vim/vimrc.bak
-	cat vimrc >> /etc/vim/vimrc
+	sed -i "s+# export LS_OPTIONS='--color=auto'+export LS_OPTIONS='--color=auto'+g" /root/.bashrc
+	sed -i "s+# eval "`dircolors`"+eval "`dircolors`"+g" /root/.bashrc
+	sed -i "s+# alias ls='ls $LS_OPTIONS'+alias ls='ls $LS_OPTIONS'+g" /root/.bashrc
+	sed -i "s+# alias ll='ls $LS_OPTIONS -l'+alias ll='ls $LS_OPTIONS -l'+g" /root/.bashrc
+	sed -i "s+# alias l='ls $LS_OPTIONS -lA'+alias l='ls $LS_OPTIONS -lA'+g" /root/.bashrc
 
 	if [ $VERBOSE = true ]; then
 		echo "[+] .bashrc edited !"
