@@ -26,6 +26,7 @@ set_motd()
 		echo
 		echo "---------------------------------------------------------------"
 		echo "[+] Creating a cool and welcoming message for SSH connections !"
+		echo "[+]"
 		echo "[+] ... "
 		sleep 1
 	fi
@@ -43,6 +44,7 @@ set_motd()
 	chmod +x /etc/update-motd.d/10-uname
 
 	if [ $VERBOSE = true ]; then
+		echo "[+]"
 		echo "[+] ʕっ•ᴥ•ʔっ Have fun !"
 		echo "---------------------------------------------------------------"
 		echo
@@ -56,6 +58,7 @@ set_packets()
 	if [ $VERBOSE = true ]; then
 		echo "---------------------------------------------------------------"
 		echo "[+] Downloading some useful packets ..."
+		echo "[+]"
 		echo "[+] ... "
 		echo
 		sleep 1
@@ -66,6 +69,7 @@ set_packets()
 	if [ $VERBOSE = true ]; then
 		echo
 		echo "[+] ..."
+		echo "[+]"
 		echo "[+] ʕっ•ᴥ•ʔっ Packets installed !"
 		echo "---------------------------------------------------------------"
 		echo
@@ -79,6 +83,7 @@ set_update ()
 	if [ $VERBOSE = true ]; then
 		echo "---------------------------------------------------------------"
 		echo "[+] Updating and upgrading the system ..."
+		echo "[+]"
 		echo "[+] ... "
 		echo
 		sleep 1
@@ -89,6 +94,7 @@ set_update ()
 	if [ $VERBOSE = true ]; then
 		echo
 		echo "[+] ..."
+		echo "[+]"
 		echo "[+] ʕっ•ᴥ•ʔっ System updated !"
 		echo "---------------------------------------------------------------"
 		echo
@@ -102,6 +108,7 @@ set_vimrc()
 	if [ $VERBOSE = true ]; then
 		echo "---------------------------------------------------------------"
 		echo "[+] Editing the vimrc to be just like you like it ..."
+		echo "[+]"
 		echo "[+] ... "
 		sleep 1
 	fi
@@ -110,6 +117,7 @@ set_vimrc()
 	cat vimrc >> /etc/vim/vimrc
 
 	if [ $VERBOSE = true ]; then
+		echo "[+]"
 		echo "[+] ʕっ•ᴥ•ʔっ vimrc edited !"
 		echo "---------------------------------------------------------------"
 		echo
@@ -123,6 +131,7 @@ set_nanorc()
 	if [ $VERBOSE = true ]; then
 		echo "---------------------------------------------------------------"
 		echo "[+] Editing the nanorc to be just like you like it ..."
+		echo "[+]"
 		echo "[+] ... "
 		sleep 1
 	fi
@@ -131,6 +140,7 @@ set_nanorc()
 	cat nanorc >> /etc/nanorc
 
 	if [ $VERBOSE = true ]; then
+		echo "[+]"
 		echo "[+] ʕっ•ᴥ•ʔっ nanorc edited !"
 		echo "---------------------------------------------------------------"
 		echo
@@ -144,6 +154,7 @@ set_bashrc()
 	if [ $VERBOSE = true ]; then
 		echo "---------------------------------------------------------------"
 		echo "[+] Editing the .bashrc to show us some colors ..."
+		echo "[+]"
 		echo "[+] ... "
 		sleep 1
 	fi
@@ -155,6 +166,7 @@ set_bashrc()
 	sed -i "s+# alias l='ls \$LS_OPTIONS -lA'+alias l='ls \$LS_OPTIONS -lA'+g" /root/.bashrc
 
 	if [ $VERBOSE = true ]; then
+		echo "[+]"
 		echo "[+] ʕっ•ᴥ•ʔっ .bashrc edited !"
 		echo "---------------------------------------------------------------"
 		echo
@@ -168,6 +180,7 @@ set_sourcelist()
 	if [ $VERBOSE = true ]; then
 		echo "---------------------------------------------------------------"
 		echo "[+] Adding non-free and contrib packages to the source list ..."
+		echo "[+]"
 		echo "[+] ... "
 		echo
 		sleep 1
@@ -182,6 +195,7 @@ set_sourcelist()
 	if [ $VERBOSE = true ]; then
 		echo
 		echo "[+] ..."
+		echo "[+]"
 		echo "[+] ʕっ•ᴥ•ʔっ Packages successfully added !"
 		echo "---------------------------------------------------------------"
 		echo
@@ -195,6 +209,7 @@ set_ssh()
 	if [ $VERBOSE = true ]; then
 		echo "---------------------------------------------------------------"
 		echo "[+] Any SSH keys ?"
+		echo "[+]"
 		echo "[+] ... "
 		sleep 1
 	fi
@@ -209,6 +224,7 @@ set_ssh()
 				systemctl restart sshd ;
 				if [ $VERBOSE = true ]; then
 					echo "[+] ... "
+					echo "[+]"
 					echo "[+] ʕっ•ᴥ•ʔっ Key Added !"
 					echo "---------------------------------------------------------------"
 					echo
@@ -218,6 +234,7 @@ set_ssh()
 			[Nn]*)
 				if [ $VERBOSE = true ]; then
 					echo "[+] ... "
+					echo "[+]"
 					echo "[+] ʕっ•ᴥ•ʔっ No Key Added !"
 					echo "---------------------------------------------------------------"
 					echo
@@ -239,7 +256,7 @@ set_yeehaa()
 		echo
 		echo "               The setup is now complete."
 		echo
-		echo "                ヽ༼ ຈل͜ຈ༼ ▀̿̿Ĺ̯̿̿▀̿ ̿༽Ɵ͆ل͜Ɵ͆ ༽ﾉ"
+		echo "                     ╭(ʘ̆~◞౪◟~ʘ̆)╮ "
 		echo
 		echo
 		echo "---------------------------------------------------------------"
@@ -287,3 +304,4 @@ set_vimrc
 set_nanorc
 set_bashrc
 set_ssh
+set_yeehaa
