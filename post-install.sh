@@ -23,10 +23,10 @@ usage()
 set_motd()
 {
 	if [ $VERBOSE = true ]; then
+		echo
 		echo "---------------------------------------------------------------"
 		echo "[+] Creating a cool and welcoming message for SSH connections !"
 		echo "[+] ... "
-		echo
 		sleep 1
 	fi
 
@@ -43,7 +43,7 @@ set_motd()
 	chmod +x /etc/update-motd.d/10-uname
 
 	if [ $VERBOSE = true ]; then
-		echo "[+] Done !"
+		echo "[+] Have fun !"
 		echo "---------------------------------------------------------------"
 		echo
 		sleep 0.5
@@ -66,7 +66,7 @@ set_packets()
 	if [ $VERBOSE = true ]; then
 		echo
 		echo "[+] ..."
-		echo "[+] Done !"
+		echo "[+] Packets installed !"
 		echo "---------------------------------------------------------------"
 		echo
 		sleep 0.5
@@ -89,7 +89,7 @@ set_update ()
 	if [ $VERBOSE = true ]; then
 		echo
 		echo "[+] ..."
-		echo "[+] Done !"
+		echo "[+] System updated !"
 		echo "---------------------------------------------------------------"
 		echo
 		sleep 0.5
@@ -110,7 +110,7 @@ set_vimrc()
 	cat vimrc >> /etc/vim/vimrc
 
 	if [ $VERBOSE = true ]; then
-		echo "[+] Done !"
+		echo "[+] vimrc edited !"
 		echo "---------------------------------------------------------------"
 		echo
 		sleep 0.5
@@ -131,7 +131,7 @@ set_nanorc()
 	cat nanorc >> /etc/nanorc
 
 	if [ $VERBOSE = true ]; then
-		echo "[+] Done !"
+		echo "[+] nanorc edited !"
 		echo "---------------------------------------------------------------"
 		echo
 		sleep 0.5
@@ -145,7 +145,6 @@ set_bashrc()
 		echo "---------------------------------------------------------------"
 		echo "[+] Editing the .bashrc to show us some colors ..."
 		echo "[+] ... "
-		echo
 		sleep 1
 	fi
 
@@ -153,16 +152,14 @@ set_bashrc()
 	cat vimrc >> /etc/vim/vimrc
 
 	if [ $VERBOSE = true ]; then
-		echo
-		echo "[+] ..."
-		echo "[+] Done !"
+		echo "[+] .bashrc edited !"
 		echo "---------------------------------------------------------------"
 		echo
 		sleep 0.5
 	fi
 }
 
-# -> Ajout des dépôts "contrib" et "non-free" aux sources
+# Ajout des dépôts "contrib" et "non-free" aux sources
 set_sourcelist()
 {
 	if [ $VERBOSE = true ]; then
@@ -182,7 +179,7 @@ set_sourcelist()
 	if [ $VERBOSE = true ]; then
 		echo
 		echo "[+] ..."
-		echo "[+] Done !"
+		echo "[+] Packages successfully added !"
 		echo "---------------------------------------------------------------"
 		echo
 		sleep 0.5
@@ -194,9 +191,8 @@ set_ssh()
 {
 	if [ $VERBOSE = true ]; then
 		echo "---------------------------------------------------------------"
-		echo "[+] Adding your SSH keys ?"
+		echo "[+] Any SSH keys ?"
 		echo "[+] ... "
-		echo
 		sleep 1
 	fi
 
@@ -204,32 +200,36 @@ set_ssh()
 		read -p "$*[+] Would you like to add a SSH Pritvate Key for root login ? [y/n]: " yn
 		case $yn in
 			[Yy]*)
-				read -p "Past your key here : " SSH_KEY ;
+				read -p "[+] Paste your key here : " SSH_KEY ;
 				mkdir -p /root/.ssh && echo "$SSH_KEY" >> /root/.ssh/authorized_keys ;
 				sed -i 's+#PermitRootLogin prohibit-password+PermitRootLogin prohibit-password+g' /etc/ssh/sshd_config ;
 				systemctl restart sshd ;
+				if [ $VERBOSE = true ]; then
+					echo "[+] ... "
+					echo "[+] Key Added !"
+					echo "---------------------------------------------------------------"
+					echo
+					sleep 0.5
+				fi ;
 				return 0 ;;
 			[Nn]*)
+				if [ $VERBOSE = true ]; then
+					echo "[+] ... "
+					echo "[+] No Key Added !"
+					echo "---------------------------------------------------------------"
+					echo
+					sleep 0.5
+				fi
 				return 1 ;;
 		esac
 	done
 
-	if [ $VERBOSE = true ]; then
-		echo
-		echo "[+] ..."
-		echo "[+] Done !"
-		echo "---------------------------------------------------------------"
-		echo
-		sleep 0.5
-	fi
+
 }
 
-# -> Variables getops
+# Variables getops
 SOURCE_LIST=false
 VERBOSE=true
-
-# -> Test sur les arguments
-#	if [ $# = 0 ]; then usage ; fi
 
 # -> Traitement des arguments
 while getopts ":hvs:-:" option
