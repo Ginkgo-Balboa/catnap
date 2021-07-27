@@ -43,7 +43,7 @@ set_motd()
 	chmod +x /etc/update-motd.d/10-uname
 
 	if [ $VERBOSE = true ]; then
-		echo "[+] Have fun !"
+		echo "[+] ʕっ•ᴥ•ʔっ Have fun !"
 		echo "---------------------------------------------------------------"
 		echo
 		sleep 0.5
@@ -66,7 +66,7 @@ set_packets()
 	if [ $VERBOSE = true ]; then
 		echo
 		echo "[+] ..."
-		echo "[+] Packets installed !"
+		echo "[+] ʕっ•ᴥ•ʔっ Packets installed !"
 		echo "---------------------------------------------------------------"
 		echo
 		sleep 0.5
@@ -89,7 +89,7 @@ set_update ()
 	if [ $VERBOSE = true ]; then
 		echo
 		echo "[+] ..."
-		echo "[+] System updated !"
+		echo "[+] ʕっ•ᴥ•ʔっ System updated !"
 		echo "---------------------------------------------------------------"
 		echo
 		sleep 0.5
@@ -110,7 +110,7 @@ set_vimrc()
 	cat vimrc >> /etc/vim/vimrc
 
 	if [ $VERBOSE = true ]; then
-		echo "[+] vimrc edited !"
+		echo "[+] ʕっ•ᴥ•ʔっ vimrc edited !"
 		echo "---------------------------------------------------------------"
 		echo
 		sleep 0.5
@@ -131,7 +131,7 @@ set_nanorc()
 	cat nanorc >> /etc/nanorc
 
 	if [ $VERBOSE = true ]; then
-		echo "[+] nanorc edited !"
+		echo "[+] ʕっ•ᴥ•ʔっ nanorc edited !"
 		echo "---------------------------------------------------------------"
 		echo
 		sleep 0.5
@@ -155,7 +155,7 @@ set_bashrc()
 	sed -i "s+# alias l='ls \$LS_OPTIONS -lA'+alias l='ls \$LS_OPTIONS -lA'+g" /root/.bashrc
 
 	if [ $VERBOSE = true ]; then
-		echo "[+] .bashrc edited !"
+		echo "[+] ʕっ•ᴥ•ʔっ .bashrc edited !"
 		echo "---------------------------------------------------------------"
 		echo
 		sleep 0.5
@@ -182,7 +182,7 @@ set_sourcelist()
 	if [ $VERBOSE = true ]; then
 		echo
 		echo "[+] ..."
-		echo "[+] Packages successfully added !"
+		echo "[+] ʕっ•ᴥ•ʔっ Packages successfully added !"
 		echo "---------------------------------------------------------------"
 		echo
 		sleep 0.5
@@ -209,7 +209,7 @@ set_ssh()
 				systemctl restart sshd ;
 				if [ $VERBOSE = true ]; then
 					echo "[+] ... "
-					echo "[+] Key Added !"
+					echo "[+] ʕっ•ᴥ•ʔっ Key Added !"
 					echo "---------------------------------------------------------------"
 					echo
 					sleep 0.5
@@ -218,7 +218,7 @@ set_ssh()
 			[Nn]*)
 				if [ $VERBOSE = true ]; then
 					echo "[+] ... "
-					echo "[+] No Key Added !"
+					echo "[+] ʕっ•ᴥ•ʔっ No Key Added !"
 					echo "---------------------------------------------------------------"
 					echo
 					sleep 0.5
@@ -230,6 +230,23 @@ set_ssh()
 
 }
 
+set_yeehaa()
+{
+		if [ $VERBOSE = true ]; then
+		echo "---------------------------------------------------------------"
+		echo
+		echo "            (-(-_-(-_(-_(-_-)_-)-_-)_-)_-)-)"
+		echo
+		echo "               The setup is now complete."
+		echo
+		echo "                ヽ༼ ຈل͜ຈ༼ ▀̿̿Ĺ̯̿̿▀̿ ̿༽Ɵ͆ل͜Ɵ͆ ༽ﾉ"
+		echo
+		echo
+		echo "---------------------------------------------------------------"
+		echo
+		sleep 0.5
+	fi
+}
 # Variables getops
 SOURCE_LIST=false
 VERBOSE=true
