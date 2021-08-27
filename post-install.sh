@@ -32,7 +32,7 @@ set_motd()
 	fi
 
 	rm -f /etc/motd
-	cat motd >> /etc/motd
+	cat /root/post-install/motd >> /etc/motd
 
 	rm -f /etc/update-motd.d/10-uname
  
