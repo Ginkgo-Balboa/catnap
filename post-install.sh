@@ -114,7 +114,7 @@ set_vimrc()
 	fi
 	
 	mv /etc/vim/vimrc /etc/vim/vimrc.bak
-	cat vimrc >> /etc/vim/vimrc
+	cat /root/post-install/vimr >> /etc/vim/vimrc
 
 	if [ $VERBOSE = true ]; then
 		echo "[+]"
@@ -137,7 +137,7 @@ set_nanorc()
 	fi
 	
 	mv /etc/nanorc /etc/nanorc.bak
-	cat nanorc >> /etc/nanorc
+	cat /root/post-install/nanorc >> /etc/nanorc
 
 	if [ $VERBOSE = true ]; then
 		echo "[+]"
