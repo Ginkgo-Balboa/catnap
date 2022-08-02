@@ -114,7 +114,7 @@ set_vimrc()
 	fi
 	
 	mv /etc/vim/vimrc /etc/vim/vimrc.bak
-	cat /root/post-install/vimr >> /etc/vim/vimrc
+	cat /root/post-install/vimrc >> /etc/vim/vimrc
 
 	if [ $VERBOSE = true ]; then
 		echo "[+]"
